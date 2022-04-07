@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face{
+    font-family: "bebasNeue";
+    src: url(https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display&display=swap);
+    font-weight: normal;
+    font-style: normal;
+};
+
+@font-face{
+    font-family: "rubikMicrobe";
+    src: url(./common/fonts/RubikMicrobe-Regular.ttf);
+    font-weight: normal;
+    font-style: normal;
+};
