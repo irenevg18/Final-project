@@ -3,9 +3,8 @@ module.exports = {
   theme: {
     extend: {},
     fontFamily: {
-      'new': ['bebasNeue'],
-      'new2': ['rubikMicrobe']
-    }
+      new: ["Bebas Neue"],
+    },
   },
   plugins: [],
 };
