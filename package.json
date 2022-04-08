@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "v-video-embed": "^1.0.8",
     "vue": "^3.2.25",
     "vue-router": "^4.0.14",
     "vue-videobg": "^2.0.0"

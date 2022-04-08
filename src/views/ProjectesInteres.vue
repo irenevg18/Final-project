@@ -20,6 +20,7 @@
       </div>
     </div>
   </div>
+  <h1 class="text-white">pàg projectes d'interés</h1>
 </template>
 
 <script>

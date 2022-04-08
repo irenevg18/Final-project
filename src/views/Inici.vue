@@ -21,6 +21,7 @@
       </div>
     </div>
   </div>
+  <h1 class="text-white">pàg inici</h1>
 </template>
 
 <script>

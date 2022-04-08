@@ -20,6 +20,8 @@
       </div>
     </div>
   </div>
+
+  <h1 class="text-white">pàg comentaris</h1>
 </template>
 
 <script>

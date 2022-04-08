@@ -1,7 +1,8 @@
 import { createApp } from "vue";
 import App from "./App.vue";
 import "./index.css";
-
+// import Vue from "vue";
+// import Embed from "v-video-embed";
 
 import { routes } from "./routes.js";
 import { createRouter, createWebHistory } from "vue-router";
@@ -15,3 +16,4 @@ const router = createRouter({
 
 app.use(router);
 app.mount("#app");
+// Vue.use(Embed);

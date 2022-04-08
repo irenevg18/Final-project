@@ -21,6 +21,7 @@
       </div>
     </div>
   </div>
+  <h1 class="text-white">pàg col·laboracions</h1>
 </template>
 
 <script>
