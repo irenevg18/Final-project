@@ -1,9 +1,17 @@
 <template>
   <!-- con un v-if, haré que se muestre la página de inicio una vez pasados
   4 segundos y que se deje de mostrar el logo. (ejemplo portfolio admin view vs user view) -->
-  <div>
-    <h1>Hola. Aquí va el logo</h1>
-    <RouterView />
+  <div class="flex flex-col items-center">
+    <div>
+      <img
+        src="/img/logo final. pequeño.png"
+        alt="logo"
+        class="h-[100px] mt-2"
+      />
+    </div>
+    <div>
+      <RouterView />
+    </div>
   </div>
 </template>
 
