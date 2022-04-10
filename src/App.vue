@@ -4,7 +4,7 @@
   <div class="flex flex-col items-center">
     <div>
       <img
-        src="/img/logo final. pequeño.png"
+        src="/img/logo final. pequeño blanco.png"
         alt="logo"
         class="h-[100px] mt-2"
       />
