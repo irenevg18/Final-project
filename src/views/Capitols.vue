@@ -28,6 +28,8 @@
   <div class="container mx-auto mt-10">
     <div class="flex flex-col gap-44 items-center text-white">
       <div class="flex flex-col items-center gap-8">
+        <div>
+            <pantalla-click v-if="pantalla"/>
         <iframe
           src="https://player.vimeo.com/video/664231814?h=391783c052&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
           width="730"
@@ -36,11 +38,15 @@
           allow="autoplay; fullscreen; picture-in-picture"
           allowfullscreen
           title="Cap&amp;iacute;tol 1: Lluny del bosc"
+      
+          @mouseover="showPantallaClick"
+          @mouseleave="pantalla = false"
         ></iframe>
+        </div>
         <h1 class="text-center font-new text-5xl">capítol 1: Lluny del Bosc</h1>
         <button class="bg-orange-500 hover:bg-orange-400 w-36 rounded-lg py-2">Més informació</button>
       </div>
-      <div class="flex items-center flex-col gap-8">
+      <div class="flex items-center z-0 flex-col gap-8">
         <iframe
           src="https://player.vimeo.com/video/668594525?h=451c5a1661&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
           width="730"
@@ -55,7 +61,7 @@
         </h1>
         <button class="bg-orange-500 w-36 hover:bg-orange-400 rounded-lg py-2">Més informació</button>
       </div>
-      <div class="flex items-center flex-col gap-8">
+      <div class="flex items-center z-0 flex-col gap-8">
         <iframe
           src="https://player.vimeo.com/video/668598349?h=d324ada8f3&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
           width="730"
@@ -77,7 +83,26 @@
 </template>
 
 <script>
-export default {};
+import PantallaClick from "/Volumes/Bichito/codeopfe/9week/final-project/src/components/PantallaClick.vue";
+export default {
+  components: {
+    pantallaClick: PantallaClick,
+  },
+
+  data() {
+    return {
+    pantalla: false,
+
+    };
+  },
+
+  methods: {
+    showPantallaClick() {
+      this.pantalla = true;
+    }
+  }
+
+};
 </script>
 
 <style></style>
