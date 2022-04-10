@@ -46,7 +46,11 @@
         <h1 class="text-center font-new text-5xl">capítol 1: Lluny del Bosc</h1>
         <button class="bg-orange-500 hover:bg-orange-400 w-36 rounded-lg py-2">Més informació</button>
       </div>
+
+
       <div class="flex items-center z-0 flex-col gap-8">
+        <div>
+         <pantalla-click v-if="pantalla"/>
         <iframe
           src="https://player.vimeo.com/video/668594525?h=451c5a1661&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
           width="730"
@@ -55,13 +59,22 @@
           allow="autoplay; fullscreen; picture-in-picture"
           allowfullscreen
           title="Cap&amp;iacute;tol 2:Tornar a la Muntanya"
+          
+          @mouseover="showPantallaClick"
+          @mouseleave="pantalla = false"
         ></iframe>
+        </div>
         <h1 class="text-center font-new text-5xl">
           capítol 2: Tornar a la Muntanya
         </h1>
         <button class="bg-orange-500 w-36 hover:bg-orange-400 rounded-lg py-2">Més informació</button>
       </div>
+
+
+
       <div class="flex items-center z-0 flex-col gap-8">
+        <div>
+         <pantalla-click v-if="pantalla"/>
         <iframe
           src="https://player.vimeo.com/video/668598349?h=d324ada8f3&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
           width="730"
@@ -70,7 +83,10 @@
           allow="autoplay; fullscreen; picture-in-picture"
           allowfullscreen
           title="Cap&amp;iacute;tol 3: Un Futur d&amp;#039;Aiguamolls"
+          @mouseover="showPantallaClick"
+          @mouseleave="pantalla = false"
         ></iframe>
+      </div>
         <h1 class="text-center font-new text-5xl">
           capítol 3: Un Futur d'Aiguamolls
         </h1>
