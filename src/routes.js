@@ -11,7 +11,7 @@ export const routes = [
   { path: "/:path(.*)", component: NotFound },
   { path: "/capitols", name: "capitols", component: Capitols },
   {
-    path: "/capitols/capitolDestacat",
+    path: "/capitols/:id",
     name: "capitolDestacat",
     component: CapitolDestacat,
   },
