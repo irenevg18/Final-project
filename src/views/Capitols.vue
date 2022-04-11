@@ -60,7 +60,7 @@
 </template>
 
 <script>
-import { storeCapitols, getCapitols } from "../firebase";
+import { storeData } from "../firebase";
 export default {
   data() {
     return {
@@ -117,14 +117,9 @@ export default {
     };
   },
 
-  // setup() {
-  //   const capitolsStore = useCapitols();
-
-  //   return { capitolsStore };
-  // },
 
   mounted() {
-    storeCapitols(this.capitols);
+    storeData("capitols", this.capitols);
 
     // async get(){
     //   this.capitols = await getCapitols();
