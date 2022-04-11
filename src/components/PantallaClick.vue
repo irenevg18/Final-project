@@ -3,13 +3,12 @@
     <div
       class="z-10 absolute top-0 flex items-center justify-center bg-black/50 w-[730px] h-[411px]"
     >
-      <RouterLink to="/capitols/capitolDestacat">
-        <button
-          class="bg-orange-500 z-20 hover:bg-orange-400 rounded-lg w-36 py-2 mb-16 text-white"
-        >
-          Fes click
-        </button></RouterLink
+      <RouterLink
+        to="/capitols/capitolDestacat"
+        class="bg-orange-500 z-20 hover:bg-orange-400 rounded-lg w-36 py-2 mb-16 text-white"
       >
+        Fes click
+      </RouterLink>
     </div>
   </div>
 </template>

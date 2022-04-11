@@ -59,7 +59,7 @@
 
 <script>
 import PantallaClick from "../components/PantallaClick.vue";
-import { storeCapitols } from "../firebase";
+import { storeCapitols, getCapitols } from "../firebase";
 export default {
   components: {
     pantallaClick: PantallaClick,
@@ -110,6 +110,21 @@ export default {
         },
       ],
     };
+  },
+
+  // setup() {
+  //   const capitolsStore = useCapitols();
+
+  //   return { capitolsStore };
+  // },
+
+  mounted() {
+    storeCapitols(this.capitols);
+
+    // async get(){
+    //   this.capitols = await getCapitols();
+
+    // }
   },
 
   methods: {

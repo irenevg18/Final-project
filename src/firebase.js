@@ -22,10 +22,49 @@ const db = getDatabase(app);
 export function storeCapitols(capitols) {
   set(ref(db, "capitols/"), capitols);
 }
+
+export function storeComentaris(dataset) {
+  set(ref(db, dataset), comentaris);
+}
+
+export function storeLikes(likes) {
+  set(ref(db, "likes/"), likes);
+}
+
 export async function getCapitols() {
   const dbRef = ref(db);
   try {
-    const snapshot = await get(child(dbRef, `capitols/`));
+    const snapshot = await get(child(dbRef, "capitols/"));
+
+    if (snapshot.exists()) {
+      return snapshot.val();
+    } else {
+      console.log("No data available");
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export async function getComentaris() {
+  const dbRef = ref(db);
+  try {
+    const snapshot = await get(child(dbRef, dataset));
+
+    if (snapshot.exists()) {
+      return snapshot.val();
+    } else {
+      console.log("No data available");
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export async function getLikes() {
+  const dbRef = ref(db);
+  try {
+    const snapshot = await get(child(dbRef, dataset));
 
     if (snapshot.exists()) {
       return snapshot.val();

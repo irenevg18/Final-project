@@ -55,6 +55,7 @@ Lluny del bosc"
 </template>
 
 <script>
+import { storeLikes } from "../firebase";
 export default {
   data() {
     return {
@@ -74,6 +75,7 @@ export default {
         `http://localhost:3000/capitols/${this.$route.name}`
       );
     },
+    // storeLikes(this.capitols.likes);
   },
 };
 </script>
