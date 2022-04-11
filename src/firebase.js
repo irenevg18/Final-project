@@ -12,9 +12,27 @@ const firebaseConfig = {
   projectId: "codeop-final-project",
   storageBucket: "codeop-final-project.appspot.com",
   messagingSenderId: "588392937245",
-  appId: "1:588392937245:web:f6440eaf681c3913b793f4"
+  appId: "1:588392937245:web:f6440eaf681c3913b793f4",
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
+
+export function storeCapitols(capitols) {
+  set(ref(db, "capitols/"), capitols);
+}
+export async function getCapitols() {
+  const dbRef = ref(db);
+  try {
+    const snapshot = await get(child(dbRef, `capitols/`));
+
+    if (snapshot.exists()) {
+      return snapshot.val();
+    } else {
+      console.log("No data available");
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}

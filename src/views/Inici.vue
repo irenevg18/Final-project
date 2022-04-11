@@ -12,7 +12,7 @@
         </button>
 
         <button class="hover:text-3xl px-4 py-1">
-          <RouterLink to="/col·laboracions"> Col·laboracions </RouterLink>
+          <RouterLink to="/colaboracions"> Col·laboracions </RouterLink>
         </button>
 
         <button class="hover:text-3xl px-4 py-1">

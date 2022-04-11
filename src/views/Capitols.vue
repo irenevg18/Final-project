@@ -26,80 +26,40 @@
   </div>
 
   <div class="container mx-auto mt-10">
-    <div class="flex flex-col gap-44 items-center text-white">
-      <div class="flex flex-col items-center gap-8">
-        <div>
-            <pantalla-click v-if="pantalla"/>
-        <iframe
-          src="https://player.vimeo.com/video/664231814?h=391783c052&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-          width="730"
-          height="411"
-          frameborder="0"
-          allow="autoplay; fullscreen; picture-in-picture"
-          allowfullscreen
-          title="Cap&amp;iacute;tol 1: Lluny del bosc"
-      
-          @mouseover="showPantallaClick"
-          @mouseleave="pantalla = false"
-        ></iframe>
+    <div v-for="capitol in capitols" :key="capitol">
+      <div class="flex flex-col gap-44 items-center text-white">
+        <div class="flex flex-col items-center gap-5">
+          <div>
+            <h1 class="text-center font-new mb-2 text-5xl">
+              {{ capitol.title }}
+            </h1>
+            <pantalla-click v-if="pantalla" />
+            <iframe
+              :src="`${capitol.videoSrc}`"
+              width="730"
+              height="411"
+              frameborder="0"
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowfullscreen
+              title="Cap&amp;iacute;tol 1: Lluny del bosc"
+              @mouseover="showPantallaClick"
+              @mouseleave="pantalla = false"
+            ></iframe>
+          </div>
+          <button
+            class="bg-orange-500 hover:bg-orange-400 w-36 rounded-lg mb-32 py-2"
+          >
+            Més informació
+          </button>
         </div>
-        <h1 class="text-center font-new text-5xl">capítol 1: Lluny del Bosc</h1>
-        <button class="bg-orange-500 hover:bg-orange-400 w-36 rounded-lg py-2">Més informació</button>
-      </div>
-
-
-      <div class="flex items-center z-0 flex-col gap-8">
-        <div>
-         <pantalla-click v-if="pantalla"/>
-        <iframe
-          src="https://player.vimeo.com/video/668594525?h=451c5a1661&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-          width="730"
-          height="411"
-          frameborder="0"
-          allow="autoplay; fullscreen; picture-in-picture"
-          allowfullscreen
-          title="Cap&amp;iacute;tol 2:Tornar a la Muntanya"
-          
-          @mouseover="showPantallaClick"
-          @mouseleave="pantalla = false"
-        ></iframe>
-        </div>
-        <h1 class="text-center font-new text-5xl">
-          capítol 2: Tornar a la Muntanya
-        </h1>
-        <button class="bg-orange-500 w-36 hover:bg-orange-400 rounded-lg py-2">Més informació</button>
-      </div>
-
-
-
-      <div class="flex items-center z-0 flex-col gap-8">
-        <div>
-         <pantalla-click v-if="pantalla"/>
-        <iframe
-          src="https://player.vimeo.com/video/668598349?h=d324ada8f3&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-          width="730"
-          height="411"
-          frameborder="0"
-          allow="autoplay; fullscreen; picture-in-picture"
-          allowfullscreen
-          title="Cap&amp;iacute;tol 3: Un Futur d&amp;#039;Aiguamolls"
-          @mouseover="showPantallaClick"
-          @mouseleave="pantalla = false"
-        ></iframe>
-      </div>
-        <h1 class="text-center font-new text-5xl">
-          capítol 3: Un Futur d'Aiguamolls
-        </h1>
-        <button class="bg-orange-500 hover:bg-orange-400 rounded-lg w-36 py-2 mb-16">
-          Més informació
-        </button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import PantallaClick from "/Volumes/Bichito/codeopfe/9week/final-project/src/components/PantallaClick.vue";
+import PantallaClick from "../components/PantallaClick.vue";
+import { storeCapitols } from "../firebase";
 export default {
   components: {
     pantallaClick: PantallaClick,
@@ -107,17 +67,56 @@ export default {
 
   data() {
     return {
-    pantalla: false,
-
+      pantalla: false,
+      capitols: [
+        {
+          title: "Capítol 1: Lluny del Bosc",
+          videoSrc:
+            "https://player.vimeo.com/video/664231814?h=391783c052&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
+          info: "",
+          likes: 0,
+          comentaris: {
+            author: "",
+            comentari: "",
+            date: "",
+            id: "id",
+          },
+        },
+        {
+          title: "Capítol 2: Tornar a la Muntanya",
+          videoSrc:
+            "https://player.vimeo.com/video/668594525?h=451c5a1661&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
+          info: "",
+          likes: 0,
+          comentaris: {
+            author: "",
+            comentari: "",
+            date: "",
+            id: "id",
+          },
+        },
+        {
+          title: "Capítol 3: Un Futur d'Aiguamolls",
+          videoSrc:
+            "https://player.vimeo.com/video/668598349?h=d324ada8f3&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
+          info: "",
+          likes: 0,
+          comentaris: {
+            author: "",
+            comentari: "",
+            date: "",
+            id: "id",
+          },
+        },
+      ],
     };
   },
 
   methods: {
     showPantallaClick() {
       this.pantalla = true;
-    }
-  }
-
+    },
+  },
 };
 </script>
 
