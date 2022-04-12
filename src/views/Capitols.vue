@@ -117,14 +117,8 @@ export default {
     };
   },
 
-
   mounted() {
     storeData("capitols", this.capitols);
-
-    // async get(){
-    //   this.capitols = await getCapitols();
-
-    // }
   },
 
   methods: {

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex">
+  <div class="flex mb-20">
     <div v-if="title" class="flex pt-2 gap-2 items-center flex-col">
       <h1 class="text-center text-white pt-8 font-new pl-10 text-5xl">
         {{ title }}
@@ -20,62 +20,54 @@
         title="Cap&amp;iacute;tol 1: 
 Lluny del bosc"
       ></iframe>
-      <div class="items-center flex">
-        <h4 class="text-white text-3xl ml-[50px]">
-          {{ counter }}
-        </h4>
+      <div class="flex gap-[360px]">
+        <div class="flex items-center gap-4">
+          <h4 class="text-white text-3xl">
+            {{ counter }}
+          </h4>
+          <i
+            class="fa-solid fa-heart text-white hover:text-orange-500 text-4xl"
+            @click="addLikes"
+          ></i>
+          <i
+            class="fa-solid fa-heart-crack text-white hover:text-orange-500 text-2xl"
+            @click="removeLikes"
+          ></i>
+        </div>
         <i
-          class="fa-solid fa-heart text-white hover:text-orange-500 text-4xl ml-4"
-          @click="addLikes"
-        ></i>
-        <i
-          class="fa-solid fa-heart-crack text-white hover:text-orange-500 text-2xl ml-4"
-          @click="removeLikes"
-        ></i>
-        <i
-          class="fa-solid fa-comment text-white hover:text-orange-500 text-4xl ml-44"
+          class="fa-solid fa-comment text-white hover:text-orange-500 text-4xl"
+          @click="comentaris = true"
+          @dblclick="comentaris = false"
         ></i>
 
         <i
-          class="fa-solid fa-link text-white hover:text-orange-500 ml-[750px] text-3xl"
+          class="fa-solid fa-link text-white hover:text-orange-500 text-3xl"
           @click="copyToClipboard"
         ></i>
       </div>
-      <div class="container w-[900px] mb-10">
-        <input
-          type="text"
-          placeholder="Nom"
-          class="bg-white pl-4 py-1 rounded-lg self-start mt-10 mb-5"
-        />
-        <textarea
-          name="comentaris"
-          id="comentaris"
-          placeholder="Deixa un comentari"
-          cols="30"
-          rows="5"
-          maxlength="600"
-          class="w-full px-4 rounded-lg py-4"
-        ></textarea>
-      </div>
+      <Comentaris v-if="comentaris" />
     </div>
   </div>
 </template>
 
 <script>
-import { getInfo, removeData, storeData } from "../firebase";
+import Comentaris from "../components/Comentaris.vue";
+import { getInfo, storeData } from "../firebase";
 export default {
+  components: {
+    Comentaris: Comentaris,
+  },
   data() {
     return {
       title: null,
       video: null,
-      likes: null,
+      comentaris: false,
       counter: 0,
       loading: false,
       error: null,
     };
   },
   mounted() {
-    // storeData(`capitols/${this.capitol.id}`, this.capitols);
     this.getInfoTitle();
     this.getInfoVideo();
     this.getInfoLikes();
@@ -114,5 +106,3 @@ export default {
   },
 };
 </script>
-
-<style></style>
