@@ -28,7 +28,7 @@
       Envia
     </button>
   </div>
-  <div class="flex flex-col">
+  <div class="flex flex-col" v-if="comentaris">
     <h1 class="text-center gap-4 text-white pt-8 font-new text-5xl">
       Comentaris
     </h1>
@@ -41,9 +41,19 @@
           <h6 class="text-lg text-orange-500 font-new">{{ comentari.date }}</h6>
         </div>
       </div>
-      <p class="w-[1080px] px-4 bg-white rounded-lg py-4">
-        {{ comentari.description }}
-      </p>
+      <div
+        class="flex justify-between bg-white w-[1080px] px-4 rounded-lg py-4"
+      >
+        <p>
+          {{ comentari.description }}
+        </p>
+        <p
+          class="text-2xl text-red-500 text-center hover:text-white hover:bg-red-400 justify-end rounded-full w-8 mx-2"
+          @click="deleteComentari(comentari.id)"
+        >
+          X
+        </p>
+      </div>
     </div>
   </div>
 </template>
@@ -61,6 +71,9 @@ export default {
       comentaris: [],
     };
   },
+  // mounted() {
+  //     this.getInfoComentaris();
+  // },
 
   methods: {
     storeComentari() {
@@ -82,10 +95,12 @@ export default {
         `capitols/${this.$route.params.id}/comentaris`,
         this.comentaris
       );
-      this.getInfoAuthor();
-      this.getInfoDate();
-      this.getInfoHour();
-      this.getInfoDescription();
+      this.author = '';
+      this.description='';
+      // this.getInfoAuthor();
+      // this.getInfoDate();
+      // this.getInfoHour();
+      // this.getInfoDescription();
     },
 
     async getInfoAuthor() {
@@ -108,8 +123,23 @@ export default {
         `capitols/${this.$route.params.id}/comentaris/${this.id}/description`
       );
     },
+    //  async getInfoComentaris() {
+    //   this.comentaris = await getInfo(
+    //     `capitols/${this.$route.params.id}/comentaris/${this.id}`
+    //   );
+    // },
 
-    deletComentari() {},
+    deleteComentari(id) {
+      this.comentaris = this.comentaris.filter(
+        (coment) => coment.id !== id
+      );
+      
+
+      storeData(
+        `capitols/${this.$route.params.id}/comentaris`,
+        this.comentaris
+      );
+    },
   },
 };
 </script>

@@ -103,6 +103,8 @@ export default {
       this.counter =
         (await getInfo(`capitols/${this.$route.params.id}/likes`)) || 0;
     },
+
+
   },
 };
 </script>
