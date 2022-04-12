@@ -2,7 +2,15 @@
 import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-import { getDatabase, ref, set, get, child } from "firebase/database";
+import {
+  getDatabase,
+  ref,
+  set,
+  get,
+  child,
+  remove,
+  update,
+} from "firebase/database";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -20,20 +28,21 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
 export function storeData(dataset, payload) {
-    console.log('storeData',dataset)
   set(ref(db, dataset), payload);
 }
 
-export async function getInfo(dataset) {
-    console.log('getInfo',dataset)
+export function removeData(dataset, payload) {
+  remove(ref(db, dataset), payload);
+}
 
+export async function getInfo(dataset) {
   const dbRef = ref(db);
   try {
     const snapshot = await get(child(dbRef, dataset));
 
     if (snapshot.exists()) {
-        console.log('snapshot', snapshot)
-        console.log(snapshot.val())
+      console.log("snapshot", snapshot);
+      console.log(snapshot.val());
 
       return snapshot.val();
     } else {

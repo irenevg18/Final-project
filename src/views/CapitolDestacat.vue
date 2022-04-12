@@ -20,8 +20,10 @@
         title="Cap&amp;iacute;tol 1: 
 Lluny del bosc"
       ></iframe>
-      <div class="self-start items-center flex">
-        <h4 class="text-white text-3xl ml-[50px]">{{ counter }}</h4>
+      <div class="items-center flex">
+        <h4 class="text-white text-3xl ml-[50px]">
+          {{ counter }}
+        </h4>
         <i
           class="fa-solid fa-heart text-white hover:text-orange-500 text-4xl ml-4"
           @click="addLikes"
@@ -30,6 +32,10 @@ Lluny del bosc"
           class="fa-solid fa-heart-crack text-white hover:text-orange-500 text-2xl ml-4"
           @click="removeLikes"
         ></i>
+        <i
+          class="fa-solid fa-comment text-white hover:text-orange-500 text-4xl ml-44"
+        ></i>
+
         <i
           class="fa-solid fa-link text-white hover:text-orange-500 ml-[750px] text-3xl"
           @click="copyToClipboard"
@@ -56,13 +62,13 @@ Lluny del bosc"
 </template>
 
 <script>
-import { getInfo, storeData } from "../firebase";
+import { getInfo, removeData, storeData } from "../firebase";
 export default {
   data() {
     return {
-      data: null,
       title: null,
       video: null,
+      likes: null,
       counter: 0,
       loading: false,
       error: null,
@@ -72,15 +78,20 @@ export default {
     // storeData(`capitols/${this.capitol.id}`, this.capitols);
     this.getInfoTitle();
     this.getInfoVideo();
+    this.getInfoLikes();
   },
   methods: {
     addLikes() {
-      this.counter = ++this.counter;
+      this.counter++;
 
-      storeData(`capitols/${this.capitol.id}/likes`, this.counter);
+      storeData(`capitols/${this.$route.params.id}/likes`, this.counter);
+      this.getInfoLikes();
     },
     removeLikes() {
-      this.counter = --this.counter;
+      this.counter--;
+
+      storeData(`capitols/${this.$route.params.id}/likes`, this.counter);
+      this.getInfoLikes();
     },
     copyToClipboard() {
       navigator.clipboard.writeText(
@@ -94,6 +105,11 @@ export default {
 
     async getInfoVideo() {
       this.video = await getInfo(`capitols/${this.$route.params.id}/videoSrc`);
+    },
+
+    async getInfoLikes() {
+      this.counter =
+        (await getInfo(`capitols/${this.$route.params.id}/likes`)) || 0;
     },
   },
 };
