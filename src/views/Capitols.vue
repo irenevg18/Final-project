@@ -72,14 +72,7 @@ export default {
             "https://player.vimeo.com/video/664231814?h=391783c052&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
           info: "",
           likes: 0,
-          comentaris: [
-            {
-              author: "",
-              comentari: "",
-              date: "",
-              id: "id",
-            },
-          ],
+          comentaris: [],
         },
         2: {
           id: 2,
@@ -88,14 +81,7 @@ export default {
             "https://player.vimeo.com/video/668594525?h=451c5a1661&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
           info: "",
           likes: 0,
-          comentaris: [
-            {
-              author: "",
-              comentari: "",
-              date: "",
-              id: "id",
-            },
-          ],
+          comentaris: [],
         },
         3: {
           id: 3,
@@ -104,14 +90,7 @@ export default {
             "https://player.vimeo.com/video/668598349?h=d324ada8f3&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
           info: "",
           likes: 0,
-          comentaris: [
-            {
-              author: "",
-              comentari: "",
-              date: "",
-              id: "id",
-            },
-          ],
+          comentaris: [],
         },
       },
     };

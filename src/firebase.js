@@ -31,18 +31,12 @@ export function storeData(dataset, payload) {
   set(ref(db, dataset), payload);
 }
 
-export function removeData(dataset, payload) {
-  remove(ref(db, dataset), payload);
-}
-
 export async function getInfo(dataset) {
   const dbRef = ref(db);
   try {
     const snapshot = await get(child(dbRef, dataset));
 
     if (snapshot.exists()) {
-      console.log("snapshot", snapshot);
-      console.log(snapshot.val());
 
       return snapshot.val();
     } else {

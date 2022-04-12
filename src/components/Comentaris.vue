@@ -18,12 +18,12 @@
       rows="5"
       maxlength="600"
       class="w-full px-4 rounded-lg py-4"
-      v-model="descripcio"
+      v-model="description"
     ></textarea>
 
     <button
       class="bg-orange-500 hover:bg-orange-400 text-center w-36 text-white mt-6 self-center rounded-lg py-2"
-      @click="storeAuthor"
+      @click="storeComentari"
     >
       Envia
     </button>
@@ -58,20 +58,34 @@ import { getInfo, storeData } from "../firebase";
 export default {
   data() {
     return {
-      author: "",
-      descripcio: "",
-      comentari: [],
-      date: null,
-      id: null,
+      author: null,
+      description: null,
+
+      comentaris: [],
     };
   },
 
+  computed: {},
+
   methods: {
-    storeAuthor() {
-      this.comentari.push(this.author);
+    storeComentari() {
+      const today = new Date();
+
+      this.comentaris.push({
+        author: this.author,
+        description: this.description,
+        hour: today.getHours() + ":" + today.getMinutes(),
+        date:
+          today.getFullYear() +
+          "-" +
+          (today.getMonth() + 1) +
+          "-" +
+          today.getDate(),
+        id: this.comentaris.length,
+      });
       storeData(
-        `capitols/${this.$route.params.id}/${comentaris[0]}/author`,
-        this.author
+        `capitols/${this.$route.params.id}/comentaris`,
+        this.comentaris
       );
     },
   },
