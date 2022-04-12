@@ -1,14 +1,17 @@
 <template>
   <div class="flex">
-    <div v-if="data"
-      class="flex pt-2 gap-2 items-center flex-col"
-    >
+    <div v-if="title" class="flex pt-2 gap-2 items-center flex-col">
       <h1 class="text-center text-white pt-8 font-new pl-10 text-5xl">
-        hola{{ data.title }}
+        {{ title }}
       </h1>
-        <RouterLink to="/capitols" class="hover:text-3xl text-white/70 font-new text-2xl px-4 py-1">Torna a Capítols</RouterLink>
+      <RouterLink
+        to="/capitols"
+        class="hover:text-3xl text-white/70 font-new text-2xl px-4 py-1"
+        >Torna a Capítols</RouterLink
+      >
       <iframe
-        src="https://player.vimeo.com/video/664231814?h=391783c052&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+        v-if="video"
+        :src="`${video}`"
         width="1000"
         height="563"
         frameborder="0"
@@ -56,9 +59,10 @@ Lluny del bosc"
 import { getInfo, storeData } from "../firebase";
 export default {
   data() {
-    console.log("data");
     return {
       data: null,
+      title: null,
+      video: null,
       counter: 0,
       loading: false,
       error: null,
@@ -66,14 +70,14 @@ export default {
   },
   mounted() {
     // storeData(`capitols/${this.capitol.id}`, this.capitols);
-    console.log("mounted");
-    this.data = getInfo("capitols");
+    this.getInfoTitle();
+    this.getInfoVideo();
   },
   methods: {
     addLikes() {
       this.counter = ++this.counter;
 
-      storeData(`capitols/${this.capitol.id}/likes`, this.counter)
+      storeData(`capitols/${this.capitol.id}/likes`, this.counter);
     },
     removeLikes() {
       this.counter = --this.counter;
@@ -83,7 +87,14 @@ export default {
         `http://localhost:3000/capitols/${this.$route.params.id}`
       );
     },
-  
+
+    async getInfoTitle() {
+      this.title = await getInfo(`capitols/${this.$route.params.id}/title`);
+    },
+
+    async getInfoVideo() {
+      this.video = await getInfo(`capitols/${this.$route.params.id}/videoSrc`);
+    },
   },
 };
 </script>
