@@ -28,29 +28,24 @@
       Envia
     </button>
   </div>
+  <div class="flex flex-col">
+    <h1 class="text-center gap-4 text-white pt-8 font-new text-5xl">
+      Comentaris
+    </h1>
 
-  <h1 class="text-center text-white pt-8 font-new pl-10 text-5xl">
-    Comentaris
-  </h1>
-
-  <textarea
-    name="comentaris"
-    id="comentaris"
-    placeholder="Deixa un comentari"
-    cols="30"
-    rows="5"
-    maxlength="600"
-    class="w-full px-4 rounded-lg py-4"
-  ></textarea>
-  <textarea
-    name="comentaris"
-    id="comentaris"
-    placeholder="Deixa un comentari"
-    cols="30"
-    rows="5"
-    maxlength="600"
-    class="w-full px-4 rounded-lg py-4"
-  ></textarea>
+    <div v-for="comentari in comentaris" :key="comentari.id">
+      <div class="flex justify-between mt-8 mx-2">
+        <h4 class="text-black font-new text-xl">{{ comentari.author }}</h4>
+        <div class="flex gap-4">
+          <h6 class="text-lg text-orange-400 font-new">{{ comentari.hour }}</h6>
+          <h6 class="text-lg text-orange-500 font-new">{{ comentari.date }}</h6>
+        </div>
+      </div>
+      <p class="w-[1080px] px-4 bg-white rounded-lg py-4">
+        {{ comentari.description }}
+      </p>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -60,12 +55,12 @@ export default {
     return {
       author: null,
       description: null,
-
+      date: null,
+      hour: null,
+      id: null,
       comentaris: [],
     };
   },
-
-  computed: {},
 
   methods: {
     storeComentari() {
@@ -87,7 +82,34 @@ export default {
         `capitols/${this.$route.params.id}/comentaris`,
         this.comentaris
       );
+      this.getInfoAuthor();
+      this.getInfoDate();
+      this.getInfoHour();
+      this.getInfoDescription();
     },
+
+    async getInfoAuthor() {
+      this.author = await getInfo(
+        `capitols/${this.$route.params.id}/comentaris/${this.id}/author`
+      );
+    },
+    async getInfoDate() {
+      this.date = await getInfo(
+        `capitols/${this.$route.params.id}/comentaris/${this.id}/date`
+      );
+    },
+    async getInfoHour() {
+      this.hour = await getInfo(
+        `capitols/${this.$route.params.id}/comentaris/${this.id}/hour`
+      );
+    },
+    async getInfoDescription() {
+      this.description = await getInfo(
+        `capitols/${this.$route.params.id}/comentaris/${this.id}/description`
+      );
+    },
+
+    deletComentari() {},
   },
 };
 </script>
