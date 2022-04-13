@@ -1,4 +1,9 @@
 <template>
+
+<div>
+<img src="../../public/img/earth.spinner.gif" alt="loading" v-if="loading = false" class="h-44 py-6 bg-white/60 rounded-full">
+</div>
+
   <h1 class="text-center text-white pt-8 font-new pl-10 mt-20 text-5xl">
     Afegeix un comentari
   </h1>
@@ -29,16 +34,16 @@
     </button>
   </div>
   <div class="flex flex-col" v-if="comentaris">
-    <h1 class="text-center gap-4 text-white pt-8 font-new text-5xl">
+    <h1 class="text-center gap-4 text-white pt-8 font-new text-5xl" v-if="title">
       Comentaris
     </h1>
 
     <div v-for="comentari in comentaris" :key="comentari.id">
       <div class="flex justify-between mt-8 mx-2">
-        <h4 class="text-black font-new text-xl">{{ comentari.author }}</h4>
+        <h4 class="text-white font-new text-xl">{{ comentari.author }}</h4>
         <div class="flex gap-4">
-          <h6 class="text-lg text-orange-400 font-new">{{ comentari.hour }}</h6>
-          <h6 class="text-lg text-orange-500 font-new">{{ comentari.date }}</h6>
+          <h6 class="text-lg text-black font-new">{{ comentari.hour }}</h6>
+          <h6 class="text-lg text-black font-new">{{ comentari.date }}</h6>
         </div>
       </div>
       <div
@@ -63,6 +68,8 @@ import { getInfo, storeData } from "../firebase";
 export default {
   data() {
     return {
+      title: false,
+      loading: false,
       author: null,
       description: null,
       date: null,
@@ -77,6 +84,8 @@ export default {
 
   methods: {
     storeComentari() {
+      this.title = true;
+
       const today = new Date();
 
       this.comentaris.push({

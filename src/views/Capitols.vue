@@ -1,7 +1,4 @@
 <template>
-  <!-- hay que poner un loading mientras se cargan los vídeos -->
-  <!-- con un condicional mostrar el componente modal -->
-
   <div class="sticky top-0">
     <div class="flex justify-center items-center font-new px-8 py-4">
       <RouterLink to="/" class="hover:text-3xl text-white text-2xl px-4 py-1">
@@ -10,10 +7,6 @@
 
       <div class="flex items-center font-bold text-white text-2xl gap-2">
         <div class="font-bold text-5xl text-white">capítols</div>
-
-        <RouterLink to="/comentaris" class="hover:text-3xl px-4 py-1"
-          >Comentaris</RouterLink
-        >
 
         <RouterLink to="/col·laboracions" class="hover:text-3xl px-4 py-1">
           Col·laboracions
@@ -26,6 +19,7 @@
     </div>
   </div>
 
+
   <div class="container mx-auto mt-10">
     <div v-for="capitol in capitols" :key="capitol.id">
       <div class="flex flex-col gap-44 items-center text-white">
@@ -35,8 +29,15 @@
               {{ capitol.title }}
             </h1>
 
-            <iframe
-              :src="`${capitol.videoSrc}`"
+            <img
+              :src="`${capitol.image}`"
+              class="shadow-xl contrast-100 rounded-2xl hover:brightness-125 shadow-orange-300/60"
+              @mouseover="showPantallaClick"
+              @mouseleave="pantalla = false"
+            />
+
+            <!-- <iframe
+              :src="`${capitol.video}`"
               width="730"
               height="411"
               frameborder="0"
@@ -45,7 +46,7 @@
               title="Cap&amp;iacute;tol 1: Lluny del bosc"
               @mouseover="showPantallaClick"
               @mouseleave="pantalla = false"
-            ></iframe>
+            ></iframe> -->
           </div>
           <RouterLink
             :to="`/capitols/${capitol.id}`"
@@ -68,8 +69,9 @@ export default {
         1: {
           title: "Capítol 1: Lluny del Bosc",
           id: 1,
-          videoSrc:
+          video:
             "https://player.vimeo.com/video/664231814?h=391783c052&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
+          image: "../../public/img/img-cap-1.jpg",
           info: "",
           likes: 0,
           comentaris: [],
@@ -77,8 +79,9 @@ export default {
         2: {
           id: 2,
           title: "Capítol 2: Tornar a la Muntanya",
-          videoSrc:
+          video:
             "https://player.vimeo.com/video/668594525?h=451c5a1661&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
+          image: "../../public/img/img-cap-2.jpg",
           info: "",
           likes: 0,
           comentaris: [],
@@ -86,8 +89,9 @@ export default {
         3: {
           id: 3,
           title: "Capítol 3: Un Futur d'Aiguamolls",
-          videoSrc:
+          video:
             "https://player.vimeo.com/video/668598349?h=d324ada8f3&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
+          image: "../../public/img/img-cap-3.jpg",
           info: "",
           likes: 0,
           comentaris: [],

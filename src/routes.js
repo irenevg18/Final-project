@@ -1,7 +1,6 @@
 import Inici from "./views/Inici.vue";
 import NotFound from "./views/NotFound.vue";
 import Capitols from "./views/Capitols.vue";
-import Comentaris from "./views/Comentaris.vue";
 import Colaboracions from "./views/Colaboracions.vue";
 import ProjectesInteres from "./views/ProjectesInteres.vue";
 import CapitolDestacat from "./views/CapitolDestacat.vue";
@@ -15,7 +14,6 @@ export const routes = [
     name: "capitolDestacat",
     component: CapitolDestacat,
   },
-  { path: "/comentaris", name: "comentaris", component: Comentaris },
   {
     path: "/col·laboracions",
     name: "col·laboracions",

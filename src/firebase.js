@@ -34,6 +34,7 @@ export function storeData(dataset, payload) {
 export async function getInfo(dataset) {
   const dbRef = ref(db);
   try {
+
     const snapshot = await get(child(dbRef, dataset));
 
     if (snapshot.exists()) {
