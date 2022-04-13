@@ -31,7 +31,7 @@
 
             <img
               :src="`${capitol.image}`"
-              class="shadow-xl contrast-100 rounded-2xl hover:brightness-125 shadow-orange-300/60"
+              class="shadow-xl contrast-100 hover:brightness-125 shadow-orange-300/60"
               @mouseover="showPantallaClick"
               @mouseleave="pantalla = false"
             />
@@ -50,7 +50,7 @@
           </div>
           <RouterLink
             :to="`/capitols/${capitol.id}`"
-            class="bg-orange-500 hover:bg-orange-400 text-center w-36 rounded-lg mb-32 py-2"
+            class="bg-orange-500 hover:bg-orange-400 text-center contrast-125 w-36 rounded-lg mb-32 py-2"
           >
             Ves al capítol
           </RouterLink>
@@ -71,7 +71,7 @@ export default {
           id: 1,
           video:
             "https://player.vimeo.com/video/664231814?h=391783c052&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
-          image: "../../public/img/img-cap-1.jpg",
+          image: "../../public/img/img-cap-1-1.jpg",
           info: "",
           likes: 0,
           comentaris: [],
@@ -81,7 +81,7 @@ export default {
           title: "Capítol 2: Tornar a la Muntanya",
           video:
             "https://player.vimeo.com/video/668594525?h=451c5a1661&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
-          image: "../../public/img/img-cap-2.jpg",
+          image: "../../public/img/img-cap-2-1.jpg",
           info: "",
           likes: 0,
           comentaris: [],
@@ -91,7 +91,7 @@ export default {
           title: "Capítol 3: Un Futur d'Aiguamolls",
           video:
             "https://player.vimeo.com/video/668598349?h=d324ada8f3&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
-          image: "../../public/img/img-cap-3.jpg",
+          image: "../../public/img/img-cap-3-1.jpg",
           info: "",
           likes: 0,
           comentaris: [],
